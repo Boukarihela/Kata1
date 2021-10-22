@@ -1,22 +1,24 @@
 package Model;
 
-import Model.Enum.ProductMethodSale;
+import Model.Enum.SaleType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
 @Getter
-@Setter
 @AllArgsConstructor
-public class Product {
+public final class Product {
 
-    private String ref;
-    private String name;
+    private final String ref;
+    private final String name;
     private String description;
-    private ProductMethodSale productMethodSale;
-    private Price price;
+    private BigDecimal price;
+    private SaleType saleType;
+    private BigDecimal discountPrice;
 
-    public Product(String ref, String name, Price price) {
+    public Product(String ref, String name, BigDecimal price) {
         this.ref = ref;
         this.name = name;
         this.price = price;

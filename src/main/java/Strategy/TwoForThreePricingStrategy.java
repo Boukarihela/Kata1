@@ -1,15 +1,16 @@
 package Strategy;
 
-import Model.*;
-import utils.Utils;
+import Model.Product;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class TwoForThreePricingStrategy implements PricingStrategy {
 
 
     @Override
-    public double calculatePrice(int quantity, Price price) {
-
-        double total= (quantity / 3) * price.getDiscountPrice() + (quantity % 3) * price.getUnitPrice();
-        return Utils.totalDecimalConverter(total);
+    public BigDecimal calculatePrice(Product product, double quantity) {
+        BigDecimal total = new BigDecimal(quantity).divide(new BigDecimal(3), RoundingMode.DOWN).multiply(product.getDiscountPrice()).add(new BigDecimal(quantity).remainder(new BigDecimal(3)).multiply(product.getPrice()));
+        return total;
     }
 }

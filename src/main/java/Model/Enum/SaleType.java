@@ -1,6 +1,6 @@
 package Model.Enum;
 
-public enum ProductMethodSale {
+public enum SaleType {
     QUNATITY,
     UNIT
 }

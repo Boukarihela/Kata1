@@ -1,17 +1,25 @@
 
 package Strategy;
 
-import Model.*;
-import utils.Utils;
+import Model.Product;
+
+import java.math.BigDecimal;
 
 public class DefaultPricingStrategy implements PricingStrategy {
 
 
     @Override
-    public double calculatePrice(int quantity, Price price) {
-
-        double total= quantity * price.getUnitPrice();
-        return Utils.totalDecimalConverter(total);
+    public BigDecimal calculatePrice(Product product, double quantity) {
+        BigDecimal total = null;
+        switch (product.getSaleType()) {
+            case UNIT:
+                total = new BigDecimal(quantity).multiply(product.getPrice());
+                break;
+            case QUNATITY:
+                total = new BigDecimal(quantity).multiply(product.getPrice());
+                break;
+        }
+        return total;
 
     }
 }

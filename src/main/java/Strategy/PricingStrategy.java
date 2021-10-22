@@ -1,12 +1,9 @@
 package Strategy;
 
-import Model.*;
-import org.apache.commons.lang3.tuple.Pair;
+import Model.Product;
 
-
-import java.text.DecimalFormat;
-import java.util.List;
+import java.math.BigDecimal;
 
 public interface PricingStrategy {
-    double calculatePrice(int quantity, Price price);
+    BigDecimal calculatePrice(Product product, double quantity);
 }
